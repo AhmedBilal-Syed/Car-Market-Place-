@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Hero() {
   return (
-    <section className="bg-gray-100 py-12 px-4 text-center">
+    <section className=" py-12 px-4 text-center">
       <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
         Find the Right Car for You
       </h1>

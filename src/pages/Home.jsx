@@ -1,6 +1,7 @@
 ﻿
 import React from "react";
 import Hero from "../components/Hero";
+// import UsedCars from "./UsedCars";
 import CarCard from "../components/CarCard";
 import { Link } from "react-router-dom";
 
@@ -15,7 +16,10 @@ const Home = () => {
   return (
     <div>
       {/* Hero Section */}
+
       <Hero />
+      {/* <UsedCars/> */}
+
 
       {/* Featured Cars Section */}
       <section className="py-12 bg-gray-100">
@@ -44,7 +48,9 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      
     </div>
+    
   );
 };
 
