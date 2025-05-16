@@ -1,7 +1,7 @@
 ﻿
 import React from "react";
 import Hero from "../components/Hero";
-// import UsedCars from "./UsedCars";
+import UsedCars from "./UsedCars";
 import CarCard from "../components/CarCard";
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Home = () => {
       {/* Hero Section */}
 
       <Hero />
-      {/* <UsedCars/> */}
+      <UsedCars/>
 
 
       {/* Featured Cars Section */}
