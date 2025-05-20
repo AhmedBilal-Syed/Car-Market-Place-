@@ -7,8 +7,8 @@ const CarCard = ({ car }) => {
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       {/* Car Image */}
       <img
-        src={car.imgSrc}
-        alt={car.title}
+        src={car?.imgSrc}
+        alt={car?.title}
         className="w-full h-56 object-cover"
       />
 

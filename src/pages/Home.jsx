@@ -23,7 +23,7 @@ const Home = () => {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Cars</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {featuredCars.map((car) => (
-              <CarCard key={car.id} car={car} />
+              <CarCard key={car?.id} car={car} />
             ))}
           </div>
         </div>
