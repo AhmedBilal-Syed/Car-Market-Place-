@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const CarDetail = () => {
   const { id } = useParams(); 
 
-  // car details 
+ 
   const carDetails = {
     1: {
       title: "2019 Honda Civic",
@@ -38,7 +38,7 @@ const CarDetail = () => {
     },
   };
 
-  // Fetch the details based on the ID from URL
+  
   const car = carDetails[id];
 
   if (!car) {
@@ -49,14 +49,14 @@ const CarDetail = () => {
     <div className="py-12 bg-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Car Image */}
+          
           <img
             src={car.imgSrc}
             alt={car.title}
             className="w-full sm:w-1/2 h-96 object-cover rounded-lg shadow-md"
           />
 
-          {/* Car Details */}
+          
           <div className="sm:w-1/2 ml-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
               {car.title}
@@ -73,7 +73,7 @@ const CarDetail = () => {
             </p>
             <p className="text-gray-700 mb-8">{car.description}</p>
 
-            {/*  back to Home  */}
+            
             <Link
               to="/"
               className="text-blue-600 hover:text-blue-800 font-semibold text-sm"

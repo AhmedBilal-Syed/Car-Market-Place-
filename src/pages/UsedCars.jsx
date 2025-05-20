@@ -1,24 +1,39 @@
 ﻿import React, { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { categories } from "../data/cars";
 
 const UsedCarsBrowser = () => {
-  const categories = [
-    {
-      title: "Category",
-      items: ["City", "Make", "Model", "Budget", "Body Type"]
-    },
-    {
-      title: "Automatic cars",
-      items: ["Family Cars", "5 Seater", "Small cars", "Big cars", "Imported cars" ,"japanes cars"]
-    },
-    {
-      title: "Old Cars",
-      items: ["5 Door", "4 Door", "1000cc cars", "1300cc cars", "Japanese cars"]
-    }
-  ];
+ 
 
   const [activeCategory, setActiveCategory] = useState(0);
+  const [pageIndex, setPageIndex] = useState(0);
   const scrollRef = useRef(null);
+
+  const ITEMS_PER_PAGE = 12; 
+
+  
+  const isPagedGridCategory = ["Category", "Body Type", "Make"].includes(
+    categories[activeCategory].title
+  );
+
+  const pagedItems = isPagedGridCategory
+    ? categories[activeCategory].items.slice(
+        pageIndex * ITEMS_PER_PAGE,
+        (pageIndex + 1) * ITEMS_PER_PAGE
+      )
+    : categories[activeCategory].items;
+
+  const pageCount = isPagedGridCategory
+    ? Math.ceil(categories[activeCategory].items.length / ITEMS_PER_PAGE)
+    : 1;
+
+  const goToPrevPage = () => {
+    setPageIndex((prev) => Math.max(prev - 1, 0));
+  };
+
+  const goToNextPage = () => {
+    setPageIndex((prev) => Math.min(prev + 1, pageCount - 1));
+  };
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -27,19 +42,25 @@ const UsedCarsBrowser = () => {
     }
   };
 
-  return (
-    <div className="bg-white p-6 max-w-4xl mx-auto">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Browse Used Cars</h1>
+  
+  React.useEffect(() => {
+    setPageIndex(0);
+  }, [activeCategory]);
 
-      {/* Category Tabs */}
-      <div className="flex gap-6 mb-6 border-b border-gray-200 pb-2">
+  return (
+    <div className="bg-slate-100">
+    <div className=" p-6 max-w-6xl mx-auto">
+      <h1 className="text-[22px] font-bold text-[#333] mb-6 pl-2">Browse Used Cars</h1>
+
+      
+      <div className="flex gap-8 mb-6 border-b border-[#e5e5e5] pb-[9px] overflow-x-auto no-scrollbar pl-2">
         {categories.map((category, index) => (
           <button
             key={index}
-            className={`px-1 pb-2 font-medium ${
+            className={`whitespace-nowrap pb-[3px] px-1 text-[15px] font-medium ${
               activeCategory === index
-                ? "text-blue-600 border-b-2 border-blue-600"
-                : "text-gray-500 hover:text-gray-700"
+                ? "text-[#0066cc] border-b-2 border-[#0066cc]"
+                : "text-[#666] hover:text-[#0066cc]"
             }`}
             onClick={() => setActiveCategory(index)}
           >
@@ -48,43 +69,112 @@ const UsedCarsBrowser = () => {
         ))}
       </div>
 
-      {/* Cards Container with Arrows */}
-      <div className="relative">
-        <button
-          onClick={() => scroll("left")}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md border border-gray-200 hover:bg-gray-50"
-        >
-          <ChevronLeft className="text-gray-600 h-5 w-5" />
-        </button>
+      
+      <div className="relative px-2 ">
         
-        <button
-          onClick={() => scroll("right")}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow-md border border-gray-200 hover:bg-gray-50"
-        >
-          <ChevronRight className="text-gray-600 h-5 w-5" />
-        </button>
-
-        {/* Horizontal Cards */}
-        <div
-          ref={scrollRef}
-          className="flex gap-4 overflow-x-auto scrollbar-hide py-2 px-1"
-          style={{ scrollSnapType: "x mandatory" }}
-        >
-          {categories[activeCategory].items.map((item, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-48 bg-gray-50 rounded-lg p-4 border border-gray-200 hover:shadow-md cursor-pointer"
-              style={{ scrollSnapAlign: "start" }}
-            >
-              <h3 className="font-medium text-gray-800">{item}</h3>
-              {/* Empty space where image would be */}
-              <div className="h-20 mt-2 bg-gray-100 rounded flex items-center justify-center text-gray-400">
-                Image placeholder
-              </div>
+        {isPagedGridCategory ? (
+          <>
+            <div className="grid grid-cols-6 gap-4 px-2 py-4">
+              {pagedItems.map((item, index) => (
+                <div
+                  key={index}
+                  className={`rounded-[4px] p-[10px] border border-[#e5e5e5]  cursor-pointer ${categories[activeCategory].cardClass} flex flex-col items-center`}
+                  style={{ minHeight: "160px" }}
+                  title={item.name}
+                >
+                  <div className="h-[80px] w-[80px] mb-[10px] bg-white rounded-[2px] flex flex-col items-center justify-center text-[#999] text-4xl">
+                    {item.icon}
+                  </div>
+                  <h3 className="text-[14px] font-medium text-[#3b3b3b] text-center">
+                    {item.name}
+                  </h3>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+
+            
+            {pageCount > 1 && (
+              <div className="flex justify-center items-center gap-4 mt-4 select-none">
+                <button
+                  onClick={goToPrevPage}
+                  disabled={pageIndex === 0}
+                  className={`p-2 rounded border border-[#ddd] hover:bg-[#f5f5f5] ${
+                    pageIndex === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
+                >
+                  <ChevronLeft className="h-5 w-5 text-[#666]" />
+                </button>
+                <span className="text-sm text-[#666]">
+                  Page {pageIndex + 1} of {pageCount}
+                </span>
+                <button
+                  onClick={goToNextPage}
+                  disabled={pageIndex === pageCount - 1}
+                  className={`p-2 rounded border border-[#ddd] hover:bg-[#f5f5f5] ${
+                    pageIndex === pageCount - 1
+                      ? "opacity-50 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  <ChevronRight className="h-5 w-5 text-[#666]" />
+                </button>
+              </div>
+            )}
+          </>
+        ) : ["City", "Budget"].includes(categories[activeCategory].title) ? (
+          
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 px-2 py-4">
+            {categories[activeCategory].items.map((item, index) => (
+              <div
+                key={index}
+                className="text-m font-semibold text-[#333] hover:text-[#0066cc] hover:underline cursor-pointer"
+                title={`Cars for sale in ${item.name}`}
+              >
+                {item.name}
+              </div>
+            ))}
+          </div>
+        ) : (
+          
+         <div
+  ref={scrollRef}
+  className="flex gap-[15px] overflow-x-auto py-2 px-2 scroll-smooth no-scrollbar"
+  style={{
+    scrollSnapType: "x mandatory",
+    scrollbarWidth: "none",        
+    msOverflowStyle: "none"        
+  }}
+>
+
+            <style>
+              {`
+                div::-webkit-scrollbar {
+                  display: none;
+                }
+              `}
+            </style>
+            {categories[activeCategory].items.map((item, index) => (
+              <div
+                key={index}
+                className={`flex-shrink-0 w-[178px] rounded-[4px] p-[10px] border border-[#e5e5e5]  cursor-pointer ${categories[activeCategory].cardClass}`}
+                style={{ scrollSnapAlign: "start" }}
+              >
+                <div className="h-[100px] w-full mb-[10px] bg-white rounded-[2px] flex flex-col items-center justify-center text-[#999]">
+                  <span className="text-3xl mb-2">{item.icon}</span>
+                  <span className="text-[12px]">Image placeholder</span>
+                </div>
+                <h3 className="text-[14px] font-medium text-[#333] mb-[5px] leading-tight text-center">
+                  {item.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
+
+    
+     
+    </div>
     </div>
   );
 };
