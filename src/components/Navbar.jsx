@@ -28,18 +28,18 @@ function Navbar() {
 
   return (
     <>
-      <nav className="bg-white shadow sticky top-0 z-50">
+      <nav className="bg-gradient-to-br from-blue-700 via-blue-950 to-blue-700  shadow sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
             <div className="flex-shrink-0">
-              <Link to="/" className="text-2xl font-bold text-blue-600">
+              <Link to="/" className="text-2xl font-bold text-white">
                 PakWheels
               </Link>
             </div>
 
             
-            <div className="hidden md:flex space-x-8 text-m font-medium text-gray-700 items-center">
+            <div className="hidden md:flex space-x-8 text-m font-medium text-white items-center">
               <Link to="/used-cars" className="hover:text-blue-600">Used Cars</Link>
               <Link to="/new-cars" className="hover:text-blue-600">New Cars</Link>
               <Link to="/bikes" className="hover:text-blue-600">Bikes</Link>
@@ -53,7 +53,7 @@ function Navbar() {
               
               <button
                 onClick={toggleSearch}
-                className="text-gray-700 hover:text-blue-600 focus:outline-none"
+                className=" focus:outline-none"
                 title="Search"
               >
                 <Search size={20} />
