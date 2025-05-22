@@ -1,7 +1,7 @@
 ﻿
 import React from "react";
 import Hero from "../components/Hero";
-import UsedCars from "./UsedCars";
+import BroweUsedCars from"../components/BrowseUsedCars"
 import FeaturedCars from "./FeaturedCars";
 import Offerings from "../components/Offerings";
 
@@ -13,7 +13,7 @@ const Home = () => {
     <>
    
             <Hero />
-            <UsedCars/>
+            <BroweUsedCars/>
 <Offerings/>
             <FeaturedCars/>
 

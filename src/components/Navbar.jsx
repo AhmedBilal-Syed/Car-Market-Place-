@@ -2,6 +2,7 @@
 import { Link } from "react-router-dom";
 import { Menu, X, Search } from "lucide-react";
 import SearchBar from "./SearchBar";
+import PostAdDropdown from "./PostAdDropdown";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,18 +62,13 @@ function Navbar() {
             </div>
 
           
-            <div className="hidden md:block">
-              <Link
-                to="/sell-car"
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-semibold"
-              >
-                Post an Ad
-              </Link>
+            <div className=" md:block">
+             <PostAdDropdown/>
             </div>
 
             
             <div className="md:hidden">
-              <button onClick={toggleMenu} className="text-gray-700">
+              <button onClick={toggleMenu} className="text-white">
                 {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
             </div>
@@ -80,7 +76,8 @@ function Navbar() {
 
           
           {isOpen && (
-            <div className="md:hidden mt-2 space-y-2 text-sm font-medium text-gray-700">
+            <div className="md:hidden mt-2 space-y-2 text-sm font-medium text-white
+            ">
               <Link to="/used-cars" className="block hover:text-blue-600">Used Cars</Link>
               <Link to="/new-cars" className="block hover:text-blue-600">New Cars</Link>
               <Link to="/bikes" className="block hover:text-blue-600">Bikes</Link>
@@ -88,14 +85,9 @@ function Navbar() {
               <Link to="/videos" className="block hover:text-blue-600">Videos</Link>
               <Link to="/forums" className="block hover:text-blue-600">Forums</Link>
               <Link to="/blog" className="block hover:text-blue-600">Blog</Link>
-              <span className="inline-block bg-red-500 text-white px-2 py-0.5 rounded text-xs">New</span>
+              
               <span className="block hover:text-blue-600">More ▼</span>
-              <Link
-                to="/sell-car"
-                className="block bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-md text-sm font-semibold"
-              >
-                Post an Ad
-              </Link>
+             
             </div>
           )}
         </div>
