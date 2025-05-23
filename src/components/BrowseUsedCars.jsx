@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { categories } from "../data/cars";
 
+
 const UsedCarsBrowser = () => {
  
 
@@ -172,7 +173,7 @@ const UsedCarsBrowser = () => {
         )}
       </div>
 
-    
+  
      
     </div>
     </div>

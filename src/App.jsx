@@ -9,6 +9,7 @@ import RegisterYourCar from "./pages/RegisterYourCar";
 import SellCar from "./pages/SellCar";
 import UsedCars from"./pages/UsedCars"
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +22,7 @@ function App() {
            <Route path="/browse-used-cars" element={< BrowseUsedCars/>} />
            <Route path="/register-your-car" element={<RegisterYourCar />} />
            <Route path="/used-cars" element={<UsedCars />} />
+           
            {/* <Route path="/sell-car" element={<SellCar />} /> */}
 
 

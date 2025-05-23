@@ -2,6 +2,7 @@
 import { FaSearch, FaCar, FaUserCheck, FaRegClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { data1 } from '../data/data1';
 
+
 const UsedCars = () => {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
   const [searchFilters, setSearchFilters] = useState({
@@ -13,7 +14,7 @@ const UsedCars = () => {
     year: ''
   });
 
-  // Extract options from data1
+  
   const cityOptions = data1.find(item => item.title === "City").items;
   const budgetOptions = data1.find(item => item.title === "Budget").items;
   const bodyTypeOptions = data1.find(item => item.title === "Body Type").items;
@@ -44,7 +45,7 @@ const UsedCars = () => {
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            {/* Make Input Field */}
+            
             <input
               type="text"
               name="make"
@@ -54,7 +55,7 @@ const UsedCars = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             />
             
-            {/* City Dropdown */}
+            
             <select 
               name="city"
               value={searchFilters.city}
@@ -69,7 +70,7 @@ const UsedCars = () => {
               ))}
             </select>
             
-            {/* Price Range Dropdown */}
+            
             <select 
               name="priceRange"
               value={searchFilters.priceRange}
@@ -85,10 +86,10 @@ const UsedCars = () => {
             </select>
           </div>
 
-          {/* More Options Section */}
+          
           {showMoreOptions && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 transition-all duration-300">
-              {/* Body Type Dropdown */}
+              
               <select 
                 name="bodyType"
                 value={searchFilters.bodyType}
@@ -103,7 +104,7 @@ const UsedCars = () => {
                 ))}
               </select>
               
-              {/* Transmission Dropdown */}
+              
               <select 
                 name="transmission"
                 value={searchFilters.transmission}
@@ -115,7 +116,7 @@ const UsedCars = () => {
                 <option value="Manual">Manual</option>
               </select>
               
-              {/* Year Dropdown */}
+              
               <select 
                 name="year"
                 value={searchFilters.year}
@@ -147,7 +148,7 @@ const UsedCars = () => {
           </div>
         </div>
 
-        {/* Feature Cards Section */}
+        
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -182,7 +183,7 @@ const UsedCars = () => {
           </div>
         </div>
 
-        {/* Categories Section */}
+        
         <div className="mt-16">
           {data1.map((category, index) => (
             <div key={index} className="mb-12">
@@ -212,6 +213,7 @@ const UsedCars = () => {
           ))}
         </div>
       </div>
+      
     </div>
   );
 };
