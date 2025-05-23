@@ -62,6 +62,24 @@
       ],
       cardClass: "bg-gradient-to-br"
     },
+    {
+      title: "Body Type",
+      items: [
+        { name: "Sedan", icon: "" },
+        { name: "Hatchback", icon: "" },
+        { name: "SUV", icon: "" },
+        { name: "Crossover", icon: "" },
+        { name: "Pickup", icon: "" },
+        { name: "Van", icon: "" },
+        { name: "Coupe", icon: "" },
+        { name: "Convertible", icon: "" },
+        { name: "Wagon", icon: "" },
+        { name: "Minivan", icon: "" },
+        { name: "Truck", icon: "" },
+        { name: "Luxury", icon: "" }
+      ],
+      cardClass: "bg-gradient-to-br"
+    }
    
   ];
 

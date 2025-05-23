@@ -7,8 +7,16 @@ const UsedCars = () => {
   const [searchFilters, setSearchFilters] = useState({
     make: '',
     city: '',
-    priceRange: ''
+    priceRange: '',
+    bodyType: '',
+    transmission: '',
+    year: ''
   });
+
+  // Extract options from data1
+  const cityOptions = data1.find(item => item.title === "City").items;
+  const budgetOptions = data1.find(item => item.title === "Budget").items;
+  const bodyTypeOptions = data1.find(item => item.title === "Body Type").items;
 
   const toggleMoreOptions = () => setShowMoreOptions(!showMoreOptions);
 
@@ -21,15 +29,12 @@ const UsedCars = () => {
   };
 
   const handleSearch = () => {
-    
     console.log('Searching with filters:', searchFilters);
   };
 
   return (
     <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-
-        
         <div className="text-center mb-10">
           <h1 className="text-3xl font-bold text-gray-900 mb-3">Find Used Cars in Pakistan</h1>
           <p className="text-lg text-gray-600">
@@ -37,21 +42,19 @@ const UsedCars = () => {
           </p>
         </div>
 
-      
         <div className="bg-white rounded-lg shadow-md p-6 mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-            <select 
+            {/* Make Input Field */}
+            <input
+              type="text"
               name="make"
               value={searchFilters.make}
               onChange={handleFilterChange}
+              placeholder="Car Make or Model"
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            >
-              <option value="">Car Make or Model</option>
-              <option value="Toyota">Toyota</option>
-              <option value="Honda">Honda</option>
-              <option value="Suzuki">Suzuki</option>
-            </select>
+            />
             
+            {/* City Dropdown */}
             <select 
               name="city"
               value={searchFilters.city}
@@ -59,11 +62,14 @@ const UsedCars = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="">All Cities</option>
-              <option value="Karachi">Karachi</option>
-              <option value="Lahore">Lahore</option>
-              <option value="Islamabad">Islamabad</option>
+              {cityOptions.map((city) => (
+                <option key={city.name} value={city.name}>
+                  {city.name}
+                </option>
+              ))}
             </select>
             
+            {/* Price Range Dropdown */}
             <select 
               name="priceRange"
               value={searchFilters.priceRange}
@@ -71,31 +77,55 @@ const UsedCars = () => {
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             >
               <option value="">Price Range</option>
-              <option value="500000">Under 500,000</option>
-              <option value="1000000">500,000 - 1,000,000</option>
-              <option value="2000000">1,000,000 - 2,000,000</option>
+              {budgetOptions.map((budget) => (
+                <option key={budget.name} value={budget.name}>
+                  {budget.name}
+                </option>
+              ))}
             </select>
           </div>
 
-        
+          {/* More Options Section */}
           {showMoreOptions && (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 transition-all duration-300">
-              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg">
-                <option>Body Type</option>
-                <option>Sedan</option>
-                <option>SUV</option>
-                <option>Hatchback</option>
+              {/* Body Type Dropdown */}
+              <select 
+                name="bodyType"
+                value={searchFilters.bodyType}
+                onChange={handleFilterChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              >
+                <option value="">Body Type</option>
+                {bodyTypeOptions.map((type) => (
+                  <option key={type.name} value={type.name}>
+                    {type.name}
+                  </option>
+                ))}
               </select>
-              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg">
-                <option>Transmission</option>
-                <option>Automatic</option>
-                <option>Manual</option>
+              
+              {/* Transmission Dropdown */}
+              <select 
+                name="transmission"
+                value={searchFilters.transmission}
+                onChange={handleFilterChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              >
+                <option value="">Transmission</option>
+                <option value="Automatic">Automatic</option>
+                <option value="Manual">Manual</option>
               </select>
-              <select className="w-full px-4 py-3 border border-gray-300 rounded-lg">
-                <option>Year</option>
-                <option>2020-2023</option>
-                <option>2015-2019</option>
-                <option>2010-2014</option>
+              
+              {/* Year Dropdown */}
+              <select 
+                name="year"
+                value={searchFilters.year}
+                onChange={handleFilterChange}
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg"
+              >
+                <option value="">Year</option>
+                <option value="2020-2023">2020-2023</option>
+                <option value="2015-2019">2015-2019</option>
+                <option value="2010-2014">2010-2014</option>
               </select>
             </div>
           )}
@@ -117,7 +147,7 @@ const UsedCars = () => {
           </div>
         </div>
 
-        
+        {/* Feature Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -152,7 +182,7 @@ const UsedCars = () => {
           </div>
         </div>
 
-      
+        {/* Categories Section */}
         <div className="mt-16">
           {data1.map((category, index) => (
             <div key={index} className="mb-12">
@@ -165,11 +195,9 @@ const UsedCars = () => {
                   >
                     <div className="w-16 h-16 mb-3 bg-gray-100 rounded-full flex items-center justify-center">
                       {item.icon ? (
-                        <img
-                          src={item.icon}
-                          alt={item.name}
-                          className="w-8 h-8 object-contain"
-                        />
+                        <span className="text-gray-700 text-lg font-medium">
+                          {item.icon}
+                        </span>
                       ) : (
                         <span className="text-gray-500 text-lg font-medium">
                           {item.name.charAt(0)}
@@ -183,7 +211,6 @@ const UsedCars = () => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
