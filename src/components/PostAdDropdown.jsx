@@ -20,12 +20,7 @@ const PostAdDropdown = () => {
         >
           Sell Bike
         </Link>
-        <Link
-          to="/register-your-car"
-          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-        >
-          Register Your Car
-        </Link>
+       
         <Link
           to="/sell-number-plate"
           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"

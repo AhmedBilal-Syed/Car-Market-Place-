@@ -1,7 +1,7 @@
 ﻿import React, { useState } from 'react';
 import { FaSearch, FaCar, FaUserCheck, FaRegClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { data1 } from '../data/data1';
-
+import { Link } from 'react-router-dom';
 
 const UsedCars = () => {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
@@ -34,14 +34,16 @@ const UsedCars = () => {
   };
 
   return (
-    <div className="bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-gray-900 mb-3">Find Used Cars in Pakistan</h1>
-          <p className="text-lg text-gray-600">
-            With thousands of cars, we have just the right one for you
-          </p>
-        </div>
+    <div className="bg-gray-50 py-12 ">
+      <div className="max-w-6xl mx-auto ">
+   <div className="text-center mb-10 bg-[#0d2159] py-10 rounded-xl">
+      <h1 className="text-3xl font-bold text-white mb-3">
+        Find Used Cars in Pakistan
+      </h1>
+      <p className="text-lg text-gray-200">
+        With thousands of cars, we have just the right one for you
+      </p>
+    </div>
 
         <div className="bg-white rounded-lg shadow-md p-6 mb-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -141,7 +143,7 @@ const UsedCars = () => {
             </button>
             <button 
               onClick={handleSearch}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium flex items-center transition-colors"
+              className="bg-green-700 text-white px-6 py-3 rounded-lg font-medium flex items-center transition-colors"
             >
               <FaSearch className="mr-2" /> Search
             </button>
@@ -149,10 +151,10 @@ const UsedCars = () => {
         </div>
 
         
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-16 items-center" >
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaCar className="text-blue-600 text-xl" />
+              <img src="/freeadd.svg" alt="freeadd" />
             </div>
             <h3 className="font-bold text-lg mb-2">ADS</h3>
             <p className="text-gray-600">Free Ad</p>
@@ -161,7 +163,7 @@ const UsedCars = () => {
 
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaUserCheck className="text-blue-600 text-xl" />
+               <img src="/genbyer.svg" alt="genbyer" />
             </div>
             <h3 className="font-bold text-lg mb-2">Genuine Buyers</h3>
             <p className="text-sm text-gray-500">Get authentic offers from verified buyers.</p>
@@ -169,17 +171,17 @@ const UsedCars = () => {
 
           <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 text-center hover:shadow-md transition">
             <div className="bg-blue-100 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaRegClock className="text-blue-600 text-xl" />
+              <img src="/sellfaster.svg" alt="sell faster" />
             </div>
             <h3 className="font-bold text-lg mb-2">Sell Faster</h3>
             <p className="text-sm text-gray-500">Sell your car faster than others at a better price.</p>
           </div>
 
-          <div className="bg-blue-600 p-6 rounded-lg shadow-sm text-white text-center hover:shadow-md transition">
-            <h3 className="font-bold text-lg mb-2">Sell Your Car</h3>
-            <button className="mt-4 bg-white text-blue-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition">
-              Get Started
-            </button>
+          <div>
+          
+             <Link to="/sell-car" className="mt-4 bg-red-700 text-white px-6 py-4 rounded-lg font-medium transition">
+              sell your car
+            </Link>
           </div>
         </div>
 
