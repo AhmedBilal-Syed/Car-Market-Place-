@@ -1,19 +1,10 @@
 import React, { useState } from 'react';
-import { 
-  FaCar, 
-  FaFileAlt, 
-  FaSearch, 
-  FaShieldAlt,
-  FaHandHoldingUsd, 
-  FaFileContract,
-  FaChevronRight,
-  FaTimes
-} from 'react-icons/fa';
+import { FaChevronRight, FaTimes } from 'react-icons/fa';
 
 const offerings = [
   {
     id: 1,
-    icon: <FaCar className="text-2xl" />,
+    image: "/sellitforme.png",
     title: "Sell It For Me",
     shortDesc: "Let our experts sell your car",
     fullDesc: "Our professional sales team will handle everything from valuation to negotiations, ensuring you get the best price for your vehicle with minimal hassle.",
@@ -28,7 +19,7 @@ const offerings = [
   },
   {
     id: 2,
-    icon: <FaFileAlt className="text-2xl" />,
+    image: "/auctionsheetverifi.png",
     title: "Auction Sheet Verification",
     shortDesc: "Verify imported vehicles",
     fullDesc: "Ensure the authenticity of your imported vehicle with our comprehensive auction sheet verification service that checks for any discrepancies or tampering.",
@@ -41,35 +32,66 @@ const offerings = [
     link: "/services/auction-verification",
     color: "bg-amber-100 text-amber-600"
   },
-    {
+  {
     id: 3,
-    icon: <FaSearch className="text-2xl" />,
+    image: "/inspection.png",
     title: "Car Inspection",
-    description: "Comprehensive vehicle inspection service",
+    shortDesc: "Comprehensive vehicle inspection service",
+    fullDesc: "Our certified mechanics perform a 200+ point inspection to assess the condition of your car, ensuring peace of mind before buying or selling.",
+    features: [
+      "200+ point inspection",
+      "Engine and transmission check",
+      "Body and paint analysis",
+      "Interior and electronics testing"
+    ],
+    link: "/services/car-inspection",
     color: "bg-green-100 text-green-600"
   },
   {
     id: 4,
-    icon: <FaShieldAlt className="text-2xl" />,
+    image: "/carinsurence.png",
     title: "Car Insurance",
-    description: "Get the best insurance deals for your vehicle",
+    shortDesc: "Get the best insurance deals for your vehicle",
+    fullDesc: "Compare and choose from top insurance providers offering comprehensive, third-party, or customized plans for your vehicle.",
+    features: [
+      "Compare multiple providers",
+      "Instant quotes",
+      "Online policy generation",
+      "Dedicated support"
+    ],
+    link: "/services/car-insurance",
     color: "bg-purple-100 text-purple-600"
   },
   {
     id: 5,
-    icon: <FaHandHoldingUsd className="text-2xl" />,
+    image: "/carfinance.png",
     title: "Car Finance",
-    description: "Easy financing options for car buyers",
+    shortDesc: "Easy financing options for car buyers",
+    fullDesc: "Access a wide range of car financing options with low interest rates and flexible payment terms tailored to your budget.",
+    features: [
+      "Low interest rates",
+      "Flexible payment terms",
+      "Fast approval",
+      "Trusted banks and providers"
+    ],
+    link: "/services/car-finance",
     color: "bg-pink-100 text-pink-600"
   },
   {
     id: 6,
-    icon: <FaFileContract className="text-2xl" />,
+    image: "/transfer.png",
     title: "Ownership Transfer",
-    description: "Hassle-free transfer of vehicle ownership",
+    shortDesc: "Hassle-free transfer of vehicle ownership",
+    fullDesc: "Avoid the hassle and let us manage your vehicle’s ownership transfer with all legal documentation and regulatory compliance.",
+    features: [
+      "Document verification",
+      "NOC issuance support",
+      "Fast processing",
+      "Pickup and delivery service"
+    ],
+    link: "/services/ownership-transfer",
     color: "bg-cyan-100 text-cyan-600"
   }
-  
 ];
 
 const OfferingsSection = () => {
@@ -97,25 +119,26 @@ const OfferingsSection = () => {
                 expandedCard === service.id ? 'shadow-lg border-blue-300' : 'hover:shadow-md'
               }`}
             >
-              
               <div 
                 className={`p-6 cursor-pointer ${expandedCard === service.id ? 'hidden' : 'block'}`}
                 onClick={() => toggleCard(service.id)}
               >
-                <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center mb-4`}>
-                  {service.icon}
+                <div className="w-25 h-20 mb-4">
+                  <img 
+                    src={service.image} 
+                    alt={service.title} 
+                    className="w-22 h-20  rounded-lg" 
+                    onError={(e) => e.target.src = '/placeholder.png'} 
+                  />
                 </div>
-                
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.shortDesc}</p>
-                
                 <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-800">
                   <span>Learn more</span>
                   <FaChevronRight className="ml-2 text-sm" />
                 </div>
               </div>
 
-              
               {expandedCard === service.id && (
                 <div className="p-6 relative">
                   <button 
@@ -125,21 +148,28 @@ const OfferingsSection = () => {
                     <FaTimes />
                   </button>
 
-                  <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center mb-4`}>
-                    {service.icon}
+                  <div className="w-12 h-12 mb-4">
+                    <img 
+                      src={service.image} 
+                      alt={service.title} 
+                      className="w-full h-full object-contain rounded-lg" 
+                      onError={(e) => e.target.src = '/placeholder.png'} 
+                    />
                   </div>
-                  
+
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.fullDesc}</p>
-                  
-                  <ul className="mb-6 space-y-2">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start">
-                        <span className="text-blue-500 mr-2">✓</span>
-                        <span className="text-gray-700">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+
+                  {service.features?.length > 0 && (
+                    <ul className="mb-6 space-y-2">
+                      {service.features.map((feature, index) => (
+                        <li key={index} className="flex items-start">
+                          <span className="text-blue-500 mr-2">✓</span>
+                          <span className="text-gray-700">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
 
                   <a 
                     href={service.link}
@@ -153,8 +183,6 @@ const OfferingsSection = () => {
             </div>
           ))}
         </div>
-
-       
       </div>
     </section>
   );

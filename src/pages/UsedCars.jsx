@@ -2,6 +2,9 @@
 import { FaSearch, FaCar, FaUserCheck, FaRegClock, FaArrowDown, FaArrowUp } from 'react-icons/fa';
 import { data1 } from '../data/data1';
 import { Link } from 'react-router-dom';
+import CitySection from '../components/CitySection';
+import MakeSection from '../components/MakeSection';
+import BodyTypeSection from '../components/BodyType';
 
 const UsedCars = () => {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
@@ -34,6 +37,7 @@ const UsedCars = () => {
   };
 
   return (
+    <>
     <div className="bg-gray-50 py-12 ">
       <div className="max-w-6xl mx-auto ">
    <div className="text-center mb-10 bg-[#0d2159] py-10 rounded-xl">
@@ -186,37 +190,14 @@ const UsedCars = () => {
         </div>
 
         
-        <div className="mt-16">
-          {data1.map((category, index) => (
-            <div key={index} className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-800 mb-6">{category.title}</h2>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                {category.items.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col items-center bg-white p-4 rounded-lg shadow hover:shadow-md transition cursor-pointer"
-                  >
-                    <div className="w-16 h-16 mb-3 bg-gray-100 rounded-full flex items-center justify-center">
-                      {item.icon ? (
-                        <span className="text-gray-700 text-lg font-medium">
-                          {item.icon}
-                        </span>
-                      ) : (
-                        <span className="text-gray-500 text-lg font-medium">
-                          {item.name.charAt(0)}
-                        </span>
-                      )}
-                    </div>
-                    <span className="text-sm text-gray-700 text-center font-medium">{item.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+
       </div>
       
     </div>
+    <MakeSection/>
+    <BodyTypeSection/>
+    <CitySection/>
+    </>
   );
 };
 
