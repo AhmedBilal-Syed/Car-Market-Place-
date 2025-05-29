@@ -5,20 +5,20 @@ const FAQSection = () => {
 
   const faqs = [
     {
-      question: "How long will it take to sell a car on PakWheels?",
-      answer: "According to our past data, it takes a couple of days or even hours to sell a car. The price, pictures and description decides how soon you can sell your car. Get your ad featured to sell it even faster. Check out PakWheels Used Car Selling Guide for more information."
+      question: "Which are the most popular new cars available in Pakistan in 2025?",
+      answer: "Popular new cars in Pakistan include Honda Civic, Suzuki Alto and Toyota Corolla."
     },
     {
-      question: "How can I sell car online in Pakistan?",
-      answer: "Go to PakWheels.com & post a free ad to sell your car online. PakWheels connects you to millions of buyers easily and quickly from the comfort of your home. All you have to do is post a free ad to sell your car, put up a reasonable price and that's it! You will get genuine offers from verified buyers."
+      question: "Which are the most popular new car brands in Pakistan?",
+      answer: "Popular new car brands in Pakistan include Honda, Toyota and Suzuki."
     },
     {
-      question: "How can I get the most money for selling my car?",
-      answer: "Post detailed description including condition of the car, mileage, service history, documents and ownership details etc. Upload good quality pictures and set a fair price based on market value."
+      question: "Are there any upcoming cars in Pakistan?",
+      answer: "There are a total of 5 new car models expected to launch in Pakistan with 2025 Changan Lumin, 2025 BYD Shark and 2025 DFSK Glory 500 launching soon."
     },
     {
-      question: "Which site is best to sell car online in Pakistan?",
-      answer: "PakWheels.com is the best site to sell cars online in Pakistan. It has millions of verified buyers and tons of other car selling features including PakWheels Sell it For Me, used car price calculator."
+      question: "Which brands offer electric cars in Pakistan?",
+      answer: "Electric cars are offered by Audi, MG, and BMW in Pakistan."
     }
   ];
 
@@ -29,7 +29,7 @@ const FAQSection = () => {
   return (
     <div className="max-w-4xl mx-auto py-12 px-4 bg-gray-50">
       <div className="text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold text-gray-800">
+        <h2 className="text-2xl md:text-3xl font-bold text-gray-800 hover:text-red-700">
           Used Car Sell FAQs
         </h2>
       </div>
