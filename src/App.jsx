@@ -3,7 +3,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import CarDetail from "./pages/CarDetail";
+import CarDetail from "./components/CarDetail";
+import BrowseUsedCars from "./components/BrowseUsedCars"
+import RegisterYourCar from "./pages/RegisterYourCar";
+import SellCar from "./pages/SellCar";
+import UsedCars from"./pages/UsedCars"
+
 
 function App() {
   return (
@@ -14,6 +19,13 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
            <Route path="/car-detail/:id" element={<CarDetail />} />
+           <Route path="/browse-used-cars" element={< BrowseUsedCars/>} />
+           <Route path="/register-your-car" element={<RegisterYourCar />} />
+           <Route path="/used-cars" element={<UsedCars />} />
+           
+           <Route path="/sell-car" element={<SellCar />} />
+
+
           </Routes>
         </main>
         <Footer />
