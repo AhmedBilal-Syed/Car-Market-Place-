@@ -1,5 +1,5 @@
 import React from "react";
-import {data1} from "../data/data1"; // Adjust this if it's a named export
+import {data1} from "../data/data1"; 
 
 const CitySection = () => {
   const city = data1.find(c => c.title === "City");
