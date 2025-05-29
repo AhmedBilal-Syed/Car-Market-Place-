@@ -11,7 +11,7 @@ const CarDetail = () => {
     1: {
       title: "2019 Honda Civic",
       price: "0000",
-      imgSrc: "https://picsum.photos/200/300",
+      imgSrc: "/nissan.webp",
       year: "2019",
       mileage: "30,000 miles",
       color: "Blue",
@@ -21,7 +21,7 @@ const CarDetail = () => {
     2: {
       title: "2020 Toyota Corolla",
       price: "0000",
-      imgSrc: "https://picsum.photos/200/300",
+      imgSrc: "/nissan.webp",
       year: "2020",
       mileage: "15,000 miles",
       color: "Red",
@@ -30,7 +30,7 @@ const CarDetail = () => {
     3: {
       title: "2018 Ford Mustang",
       price: "000",
-      imgSrc: "https://picsum.photos/200/300",
+      imgSrc: "/nissan.webp",
       year: "2018",
       mileage: "20,000 miles",
       color: "Black",

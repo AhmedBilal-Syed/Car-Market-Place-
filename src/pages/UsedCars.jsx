@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import CitySection from '../components/CitySection';
 import MakeSection from '../components/MakeSection';
 import BodyTypeSection from '../components/BodyType';
+import CategorySection from '../components/CategorySection';
+import FeaturedDealers from '../components/FeaturedDealers';
 
 const UsedCars = () => {
   const [showMoreOptions, setShowMoreOptions] = useState(false);
@@ -197,6 +199,8 @@ const UsedCars = () => {
     <MakeSection/>
     <BodyTypeSection/>
     <CitySection/>
+    <CategorySection/>
+    <FeaturedDealers/>
     </>
   );
 };

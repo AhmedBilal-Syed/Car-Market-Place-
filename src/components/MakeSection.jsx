@@ -27,7 +27,7 @@ const MakeSection = () => {
 
   return (
     <div className="bg-slate-100 px-4 py-6">
-         <h2 className="text-[22px] font-bold text-[#333] mb-6 pl-2">Make</h2>
+         <h2 className="text-[22px] font-bold text-[#333] mb-6 pl-2">Browse By Make</h2>
          
          <div className="grid grid-cols-6 gap-4 px-2 py-4">
            {pagedItems.map((item, index) => (

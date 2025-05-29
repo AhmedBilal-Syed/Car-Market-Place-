@@ -9,7 +9,7 @@ const CarCard = ({ car }) => {
       <img
         src={car.imgSrc}
         alt={car.title}
-        className="w-full h-56 object-cover"
+        className="w-full h-40 object-cover"
       />
 
       

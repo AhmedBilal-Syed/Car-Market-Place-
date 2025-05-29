@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 const FeaturedCars = () => {
 
  const featuredCars = [
-    { id: 1, title: "2019 Honda Civic", price: "0000", imgSrc: "/images/car1.jpg" },
-    { id: 2, title: "2020 Toyota Corolla", price: "0000", imgSrc: "/images/car2.jpg" },
-    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/images/car3.jpg" },
-    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/images/car3.jpg" },
-    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/images/car3.jpg" },
-    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/images/car3.jpg" },
+    { id: 1, title: "2019 Honda Civic", price: "0000", imgSrc: "/nissan.webp" },
+    { id: 2, title: "2020 Toyota Corolla", price: "0000", imgSrc: "/nissan.webp" },
+    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/hond 1.webp" },
+    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/audi.webp" },
+    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/audi.webp" },
+    { id: 3, title: "2018 Ford Mustang", price: "0000", imgSrc: "/revo.webp" },
   ];
 
 
@@ -21,7 +21,7 @@ const FeaturedCars = () => {
 
     
       <section className="py-12 bg-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Cars</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {featuredCars.map((car) => (
@@ -33,7 +33,7 @@ const FeaturedCars = () => {
 
       
       <section className="py-12 bg-blue-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-4">
             Ready to Sell Your Car?
           </h2>
